@@ -2,7 +2,7 @@
 
 * 用skynet做排行服务 
 * 目标：
-  - 作一个全服排行服务
+  - 作一个通用的全服排行服务
   - 用skiplist支持实时排行
   - 支持http请求+json数据
   - 存储用redis
@@ -15,11 +15,12 @@
  1. 当玩家到达最大分数(不是最大分数不要提交)
   - 请求数据示例：
     ```
-      {"cmd":"CommitData", data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
+      {"cmd":"CommitData", "gameid":1, data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
     ```
     - 参数说明：
     ```
       cmd:请求命令类型
+      gameid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
       data:请求参数(json数据）
         uid: 玩家id
         name: 玩家名
@@ -37,11 +38,12 @@
  2. 请求排行榜
  - 请求数据示例： 
     ```
-      {"cmd":"GetRankList", data:{"uid":1001, "startindex":1, "endindex":100} 
+      {"cmd":"GetRankList", "gameid":1, data:{"uid":1001, "startindex":1, "endindex":100} 
     ```
     - 参数说明：
     ```
       cmd:请求命令类型
+      gameid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
       data:请求参数(json数据）
         uid: 玩家id
         startindex:排行榜开始下标
@@ -65,11 +67,12 @@
   **此接口一般用户不能请求 需要权限**
   - 请求数据示例：
     ```
-      {"cmd":"ClearRankList"}
+      {"cmd":"ClearRankList", "gameid":1}
     ```
     - 参数说明：
     ```
       cmd:请求命令类型
+      gameid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
     ```
     - 返回数据示例: {"ret":0}
     - 参数说明：
