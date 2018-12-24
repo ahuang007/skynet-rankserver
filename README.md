@@ -11,16 +11,27 @@
   - 数据量大时 可以考虑用其他排序方法(比如桶排序)
   - 暂不考虑过频请求以及攻击
   
+* 每个游戏参数[需要申请,不同游戏之间不能影响]
+  - appid: 游戏id
+  - appkey: 用来加密的key
+  - 加密代码如下：
+  ```
+      var url = "http://192.168.0.12:7211/rankserver?";			
+			var obj = {"op":"CommitScore", "uid": 1001, "score":99};
+			var str = JSON.stringify(obj); //将JSON对象转化为JSON字符
+			var sign = hex_md5(str + appkey);
+			url = url + "cmd=CommitScore&data=" + str + "&sign=" +sign;
+  ```
 * 接口定义：
  1. 当玩家到达最大分数(不是最大分数不要提交)
   - 请求数据示例：
     ```
-      {"cmd":"CommitData", "gameid":1, data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
+      {"cmd":"CommitData", "appid":1, data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
     ```
     - 参数说明：
     ```
       cmd:请求命令类型
-      gameid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
+      appid：游戏id(需要前后台约定好 比如 1：2048 2：flappy bird)
       data:请求参数(json数据）
         uid: 玩家id
         name: 玩家名
@@ -38,7 +49,7 @@
  2. 请求排行榜
  - 请求数据示例： 
     ```
-      {"cmd":"GetRankList", "gameid":1, data:{"uid":1001, "startindex":1, "endindex":100} 
+      {"cmd":"GetRankList", "appid":1, data:{"uid":1001, "startindex":1, "endindex":100} 
     ```
     - 参数说明：
     ```
@@ -67,7 +78,7 @@
   **此接口一般用户不能请求 需要权限**
   - 请求数据示例：
     ```
-      {"cmd":"ClearRankList", "gameid":1}
+      {"cmd":"ClearRankList", "appid":1}
     ```
     - 参数说明：
     ```
