@@ -14,7 +14,7 @@
   
 * 接口定义：
  1. 当玩家到达最大分数(不是最大分数不要提交)
-  - 请求json数据： {"cmd":"CommitData", data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
+  - 请求数据示例： {"cmd":"CommitData", data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
     - 参数说明：
     ```
       cmd:请求命令类型
@@ -24,13 +24,13 @@
         headIcon: 玩家头像url
         score: 玩家分数    
       ```
-  - 返回数据: {"ret":0}
+  - 返回数据示例: {"ret":0}
     - 参数说明：
     ```
       ret: 返回值 0 表示正常 其他值则不正常 待定
     ```
  2. 请求排行榜
- - 请求json数据： {"cmd":"GetRankList", data:{"uid":1001, "startindex":1, "endindex":100} 
+ - 请求数据示例： {"cmd":"GetRankList", data:{"uid":1001, "startindex":1, "endindex":100} 
     - 参数说明：
     ```
       cmd:请求命令类型
@@ -39,7 +39,7 @@
         startindex:排行榜开始下标
         endindex:排行榜结束下标（两者之差不能大于100）
       ```
-  - 返回数据: {"ret":0, list:[{"rank":1,"uid":1001,"score":99},{"rank":2, "uid":1002,"score":98}]}
+  - 返回数据示例: {"ret":0, list:[{"rank":1,"uid":1001,"score":99},{"rank":2, "uid":1002,"score":98}]}
     - 参数说明：
     ```
       ret: 返回值 0 表示正常 其他值则不正常 待定
