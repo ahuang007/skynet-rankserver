@@ -1,0 +1,50 @@
+-- required config
+thread    = 4
+bootstrap = "snlua bootstrap"
+cpath     = "skynet/cservice/?.so;luaclib/?.so;"
+
+harbor    = 0
+logger    = "./log/rank.log"
+daemon    = './sh/rank.pid'
+start     = "rank_main"
+
+local function concat(args)
+  local r = ''
+  for i = 1, # args do
+    r = r .. ';' .. args[i]
+  end
+  return r
+end
+
+lualoader  = "skynet/lualib/loader.lua"
+
+luaservice = concat {
+  "skynet/service/?.lua",
+
+  "service/?.lua",
+  "service/?/?.lua",
+  "service/rank/?.lua",
+
+  "service/redis/?.lua",
+  "service/logger/?.lua",
+}
+
+lua_path   = concat {
+  "skynet/lualib/?.lua",
+  "skynet/lualib/compat10/?.lua",
+
+  "common/?.lua",
+  "lualib/?.lua",
+
+  "service/?.lua",
+  "service/rank/?.lua",
+  "service/redis/?.lua",
+}
+
+lua_cpath  = concat {
+  "skynet/luaclib/?.so",
+  "luaclib/?.so",
+}
+
+cluster    = "common/clustername.lua"
+

@@ -17,7 +17,7 @@
   - 加密代码如下：
   ```
   	var url = "http://192.168.0.12:7211/rankserver?";			
-	var obj = {"op":"CommitScore", "uid": 1001, "score":99};
+	var obj = {"cmd":"CommitScore", "uid": 1001, "score":99};
 	var str = JSON.stringify(obj); //将JSON对象转化为JSON字符
 	var sign = hex_md5(str + appkey);
 	url = url + "cmd=CommitScore&data=" + str + "&sign=" +sign;
@@ -40,11 +40,12 @@
       ```
   - 返回数据示例: 
     ```
-      {"ret":0}
+      {"status":0, "errorMsg":"成功"}
     ```
     - 参数说明：
     ```
-      ret: 返回值 0 表示正常 其他值则不正常 待定
+      status: 返回值 0 表示正常 其他值则不正常 待定
+      errorMsg: 错误消息
     ```
  2. 请求排行榜
  - 请求数据示例： 
@@ -62,12 +63,12 @@
       ```
   - 返回数据示例:
       ```
-        {"ret":0, list:[{"rank":1,"uid":1001,"score":99},{"rank":2, "uid":1002,"score":98}]}
+        {"status":0, list:[{"rank":1,"uid":1001,"score":99},{"rank":2, "uid":1002,"score":98}]}
       ```
     - 参数说明：
     ```
-      ret: 返回值 0 表示正常 其他值则不正常 待定
-      list: 排行榜数据
+      status: 返回值 0 表示正常 其他值则不正常 待定
+      list: 排行榜数据[其中uid等于自己时为自己的排名信息]
         rank:排名
         uid:玩家id
         name:玩家名
@@ -85,10 +86,10 @@
       cmd:请求命令类型
       appid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
     ```
-    - 返回数据示例: {"ret":0}
+    - 返回数据示例: {"status":0}
     - 参数说明：
     ```
-      ret: 返回值 0 表示正常 其他值则不正常 待定
+      status: 返回值 0 表示正常 其他值则不正常 待定
     ```
     
     
