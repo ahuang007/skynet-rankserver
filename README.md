@@ -16,11 +16,11 @@
   - appkey: 用来加密的key
   - 加密代码如下：
   ```
-      var url = "http://192.168.0.12:7211/rankserver?";			
-			var obj = {"op":"CommitScore", "uid": 1001, "score":99};
-			var str = JSON.stringify(obj); //将JSON对象转化为JSON字符
-			var sign = hex_md5(str + appkey);
-			url = url + "cmd=CommitScore&data=" + str + "&sign=" +sign;
+  	var url = "http://192.168.0.12:7211/rankserver?";			
+	var obj = {"op":"CommitScore", "uid": 1001, "score":99};
+	var str = JSON.stringify(obj); //将JSON对象转化为JSON字符
+	var sign = hex_md5(str + appkey);
+	url = url + "cmd=CommitScore&data=" + str + "&sign=" +sign;
   ```
 * 接口定义：
  1. 当玩家到达最大分数(不是最大分数不要提交)
