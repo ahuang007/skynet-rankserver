@@ -54,7 +54,7 @@
     - 参数说明：
     ```
       cmd:请求命令类型
-      gameid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
+      appid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
       data:请求参数(json数据）
         uid: 玩家id
         startindex:排行榜开始下标
@@ -83,7 +83,7 @@
     - 参数说明：
     ```
       cmd:请求命令类型
-      gameid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
+      appid：游戏类型(需要前后台约定好 比如 1：2048 2：flappy bird)
     ```
     - 返回数据示例: {"ret":0}
     - 参数说明：
