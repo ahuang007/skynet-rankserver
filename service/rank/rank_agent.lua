@@ -69,6 +69,7 @@ function CMD.CommitData(data)
         headIcon    = data.headIcon,
         score       = data.score,
     }
+    LOG_COMMIT(uid, data.name, data.headIcon, data.score)
     cs(commit(uid, userdata))
     return true
 end
@@ -94,7 +95,7 @@ function CMD.GetRankList(data)
     local lists = {}
     local startindex = tonumber(data.startindex)
     local endindex = tonumber(data.endindex)
-    if endindex <= startindex or endindex > startindex + 100 then
+    if endindex < startindex or endindex > startindex + 100 then
         ERR("GetRankList ERROR 1", startindex, endindex)
         return false, constant.ERRORCODE.params_failed;
     end

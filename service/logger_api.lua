@@ -10,23 +10,9 @@ local date      = require "date"
 _G.defaultLevel = constant.LOG_LEVEL.LOG_DEFAULT
 
 -- 业务日志
---[[
-function LOG_REG(...)
-    skynet.send(".local_logger","lua", "log_reg", ...)
+function LOG_COMMIT(...)
+    skynet.send(".local_logger","lua", "log_commit", ...)
 end
-
-function LOG_LOGIN(...)
-    skynet.send(".local_logger","lua", "log_login", ...)
-end
-
-function LOG_LOGOUT(...)
-    skynet.send(".local_logger","lua", "log_logout", ...)
-end
-
-function LOG_ONLINE(...)
-    skynet.send(".local_logger","lua", "log_online", ...)
-end
---]]
 
 -- 错误日志 --
 local function logger(str, level, color)

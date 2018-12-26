@@ -1,6 +1,5 @@
---- login 服务
--- 登录服web接口
--- @module login.login_web
+--- rank http 服务
+-- @module rank.rank_web
 
 local skynet        = require "skynet"
 require 'skynet.manager'
@@ -58,7 +57,7 @@ local function handle_CommitData(req)
         WARN("ranksrv not exist", appid)
         return {
             status      = ErrorCode.appid_not_found[1],
-            errorMsg    = ErrorCode.appid_not_found[1]
+            errorMsg    = ErrorCode.appid_not_found[2]
         }
     end
 
@@ -66,7 +65,7 @@ local function handle_CommitData(req)
     if ok then
         return {
             status      = ErrorCode.success[1],
-            errorMsg    = ErrorCode.success[1]
+            errorMsg    = ErrorCode.success[2]
         }
     else
         return {
@@ -81,7 +80,10 @@ local function handle_GetRankList(req)
     local ranksrv = ranksrvs[tonumber(appid)]
     if not ranksrv then
         WARN("ranksrv not exist", appid)
-        return ErrorCode.appid_not_found
+        return {
+            status      = ErrorCode.appid_not_found[1],
+            errorMsg    = ErrorCode.appid_not_found[2]
+        }
     end
 
     local ok, err, lists = skynet.call(ranksrv, "lua", "GetRankList", req.data)
@@ -103,14 +105,17 @@ local function handle_ClearRankList(req)
     local ranksrv = ranksrvs[tonumber(appid)]
     if not ranksrv then
         WARN("ranksrv not exist", appid)
-        return ErrorCode.appid_not_found
+        return {
+            status      = ErrorCode.appid_not_found[1],
+            errorMsg    = ErrorCode.appid_not_found[2]
+        }
     end
 
     local ok, err = skynet.call(ranksrv, "lua", "ClearRankList", req.data)
     if ok then
         return {
             status      = ErrorCode.success[1],
-            errorMsg    = ErrorCode.success[1],
+            errorMsg    = ErrorCode.success[2],
         }
     else
         return {
