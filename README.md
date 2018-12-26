@@ -15,7 +15,7 @@
   - appkey: 用来加密的key
   - 加密代码如下：
   ```
-  	var url = "http://192.168.0.12:7211/rankserver?";			
+	var url = "http://192.168.0.12:7211/rankserver?";			
 	var obj = {"cmd":"CommitScore", "uid": 1001, "score":99};
 	var str = JSON.stringify(obj); //将JSON对象转化为JSON字符
 	var sign = hex_md5(str + appkey);
