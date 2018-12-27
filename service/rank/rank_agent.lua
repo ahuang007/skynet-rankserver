@@ -113,7 +113,7 @@ function CMD.GetRankList(data)
 
         local userdata = datas[tonumber(v)]
         local item = {
-            rankd       = count,
+            rank       = count,
             uid         = tonumber(v),
             score       = ranklist:score(tostring(v)),
             name        = userdata.name,
