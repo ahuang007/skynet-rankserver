@@ -8,7 +8,6 @@
   - 存储用redis
 * 缺陷： 
   - 排行只根据分数从大到小(当分数相同时 则可能出现不稳定性)
-  - 数据量大时 可以考虑用其他排序方法(比如桶排序)
   - 暂不考虑过频请求以及攻击
   
 * 每个游戏参数[需要申请,不同游戏之间不能影响]
@@ -16,7 +15,7 @@
   - appkey: 用来加密的key
   - 加密代码如下：
   ```
-  	var url = "http://192.168.0.12:7211/rankserver?";			
+	var url = "http://192.168.0.12:7211/rankserver?";			
 	var obj = {"cmd":"CommitScore", "uid": 1001, "score":99};
 	var str = JSON.stringify(obj); //将JSON对象转化为JSON字符
 	var sign = hex_md5(str + appkey);
