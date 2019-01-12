@@ -25,7 +25,7 @@
  1. 当玩家到达最大分数(不是最大分数不要提交)
   - 请求数据示例：
     ```
-      {"cmd":"CommitData", "appid":1, data:{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
+      {"cmd":"CommitData", "appid":1, "data":{"uid":1001, "name":"andy", "headIcon":"", "score":99} 
     ```
     - 参数说明：
     ```
@@ -49,7 +49,7 @@
  2. 请求排行榜
  - 请求数据示例： 
     ```
-      {"cmd":"GetRankList", "appid":1, data:{"uid":1001, "startindex":1, "endindex":100} 
+      {"cmd":"GetRankList", "appid":1, "data":{"uid":1001, "startindex":1, "endindex":100} 
     ```
     - 参数说明：
     ```
@@ -62,7 +62,7 @@
       ```
   - 返回数据示例:
       ```
-        {"status":0, list:[{"rank":1,"uid":1001,"score":99},{"rank":2, "uid":1002,"score":98}]}
+        {"status":0, "list":[{"rank":1,"uid":1001,"score":99},{"rank":2, "uid":1002,"score":98}]}
       ```
     - 参数说明：
     ```
