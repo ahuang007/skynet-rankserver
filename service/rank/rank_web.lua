@@ -36,7 +36,8 @@ end
 
 --[[
 排行榜服务器文档
-port: 7210
+ip:192.168.1.201
+port: 7100
 1 提交数据 http://192.168.1.201:7100/CommitData?
     {"cmd":"CommitData", "appid":1, data:{"uid":1001, "name":"andy", "headIcon":"", "score":99}
 2 查看排行榜 http://192.168.1.201:7100/GetRankList?

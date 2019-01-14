@@ -18,7 +18,7 @@ GAME_DIR=$CUR_DIR/../
 IP=$1
 
 function cpsettings(){
-    content="local M = require\"settings_template\"\n\nM.gate_host = \"$IP\"\nM.login_conf.login_ip = \"$IP\"\n\nreturn M"
+    content="local M = require\"settings_template\"\n\nM.rank_conf.rank_ip = \"$IP\"\n\nreturn M"
     echo -e $content > $2
 }
 
